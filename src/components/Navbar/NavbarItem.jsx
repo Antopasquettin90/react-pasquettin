@@ -1,16 +1,15 @@
-import { Fragment } from "react";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 
 const NavbarItem = (props) => {
   return (
-   <Fragment>
-        <li className="nav-item">
-    <p className="nav-link active"aria-current="page">
-      {props.titulo}
-      </p>
-  </li>
-  </Fragment>
-    
-  )
-}
+    <li className="nav-item">
+      <NavLink to={props.path} className="nav-link active" aria-current="page">
+        {props.titulo}
+      </NavLink>
+    </li>
+  );
+};
 
 export default NavbarItem;

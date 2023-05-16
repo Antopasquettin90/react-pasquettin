@@ -11,8 +11,9 @@ import Proximoseventos from '../Pages/Proximoseventos';
 import SobreNosotros from '../Pages/SobreNosotros';
 import Carta from '../Pages/Carta';
 
-import Navbar from '../components/Navbar/Navbar'
+
 import Footer from '../components/Footer/Footer'
+import Navbar from '../components/Navbar/Navbar';
 
 
 const Rutas = () => {
