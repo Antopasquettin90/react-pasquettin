@@ -2,7 +2,7 @@ import React from 'react'
 
 const Proximoseventos = () => {
   return (
-    <div>Proximoseventos</div>
+    <h1>Proximos Eventos</h1>
   )
 }
 

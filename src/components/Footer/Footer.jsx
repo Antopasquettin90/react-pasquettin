@@ -7,7 +7,7 @@ import { faInstagram, faTwitter, faFacebook, faWhatsapp } from '@fortawesome/fre
 
 const Footer = () => {
   return (
-    <section className="mt-4 container-fluid text-center bg-dark dimensiones-footer">
+    <section className="mt-4 container-fluid text-center bg-dark">
       <div className="row align-items-start text-white h3">
         <div className="mt-5 col m-2">
           <p>© 2023 Quijote Disco/Bar All Rights Reserved.</p>

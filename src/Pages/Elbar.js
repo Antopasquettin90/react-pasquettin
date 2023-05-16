@@ -2,7 +2,7 @@ import React from 'react'
 
 const Elbar = () => {
   return (
-    <div>Elbar</div>
+    <h1>El Bar</h1>
   )
 }
 
