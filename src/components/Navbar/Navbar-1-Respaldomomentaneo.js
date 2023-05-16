@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbaritem from './NavbarItem';
-import CartWidget from '../Carrito/CartWidget';
+import CartWidget from '../Cart/CartWidget';
 
 
 const Navbar = (props) => {
@@ -20,7 +20,7 @@ const Navbar = (props) => {
             <Navbaritem titulo={'Imagenes'}/>
             <Navbaritem titulo={'La empresa'}/>
             <Navbaritem titulo={'Contacto'}/>
-           
+          
           </ul>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
