@@ -1,12 +1,8 @@
 import React from 'react'
-import Cards from '../components/Cards/Cards'
 
 const Compratusentradas = () => {
   return (
-    <div>
-    <h1>Compra tus Entradas</h1>
-      <Cards/>
-    </div>
+    <h1>Compratusentradas</h1>
   )
 }
 

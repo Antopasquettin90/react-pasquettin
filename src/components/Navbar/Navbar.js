@@ -1,10 +1,10 @@
-import React from 'react';
-import CartWidget from '../Cart/CartWidget';
-import { NavLink } from 'react-router-dom';
-import ImgLogo from '../assets/image3.jpeg';
-import './navbar.css';
+import React from "react";
+import CartWidget from "../Cart/CartWidget";
+import { NavLink } from "react-router-dom";
+import ImgLogo from "../assets/image3.jpeg";
+import "./navbar.css";
 
-import NavbarItem from './NavbarItem';
+import NavbarItem from "./NavbarItem";
 
 const Navbar = () => {
   return (
@@ -35,7 +35,10 @@ const Navbar = () => {
             <NavbarItem titulo="Inicio" path="/Inicio" />
             <NavbarItem titulo="Próximos Eventos" path="/Proximoseventos" />
             <NavbarItem titulo="Imágenes" path="/Imagenes" />
-            <NavbarItem titulo="Compra tus entradas" path="/Compratusentradas" />
+            <NavbarItem
+              titulo="Compra tus entradas"
+              path="/Compratusentradas"
+            />
             <li className="nav-item dropdown text-white">
               <NavLink
                 to="/ElBar"
@@ -48,19 +51,14 @@ const Navbar = () => {
                 El Bar
               </NavLink>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <NavbarItem titulo="Sobre Nosotros" path="/SobreNosotros" />
-                <li>
-                  <a
-                    className="dropdown-item letras"
-                    href="https://www.menudigital.com/restaurante/quijote-bar"
-                  >
-                    Nuestra Carta
-                  </a>
+                <NavbarItem titulo="Sobre Nosotros" path="/SobreNosotros" className="text-dark" />
+                <li className="dropdown-item">
+                  <NavbarItem titulo="Carta" path="/Carta" className="text-dark" />
                 </li>
                 <li>
-                  <hr className="dropdown-divider letras" />
+                  <hr className="dropdown-divider" />
                 </li>
-                <NavbarItem titulo="Reserva tu mesa" path="/ReservaMesa" />
+                <NavbarItem titulo="Reserva tu mesa" path="/ReservaMesa" className="text-dark" />
               </ul>
             </li>
             <NavbarItem titulo="Contactos" path="/Contactos" />

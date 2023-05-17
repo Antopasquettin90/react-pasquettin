@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import './card.css';
 
-import "./card.css";
-
-function Card({ imageSource, title, text, url }) {
+function Card({ imageSource, title, text, url, price, quantity }) {
   const [expanded, setExpanded] = useState(false);
 
   const handleExpand = () => {
@@ -11,9 +10,7 @@ function Card({ imageSource, title, text, url }) {
   };
 
   const handleAddToCart = () => {
-    
- 
-    console.log("Elemento agregado al carrito");
+    console.log('Elemento agregado al carrito');
   };
 
   return (
@@ -27,20 +24,19 @@ function Card({ imageSource, title, text, url }) {
           <p className="card-text text-secondary">
             {text
               ? text
-              : "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam deserunt fuga accusantium excepturi quia, voluptates obcaecati nam in voluptas perferendis velit harum dignissimos quasi ex? Tempore repellat quo doloribus magnam."}
+              : 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam deserunt fuga accusantium excepturi quia, voluptates obcaecati nam in voluptas perferendis velit harum dignissimos quasi ex? Tempore repellat quo doloribus magnam.'}
           </p>
         )}
+        <p>Precio: {price}</p>
+        <p>Cantidad: {quantity}</p>
         <div className="button-container">
           <button
             className={`btn btn-outline-secondary border-0 ${expanded ? 'expanded' : ''}`}
             onClick={handleExpand}
           >
-            {expanded ? "Ver menos" : "Ver más"}
+            {expanded ? 'Ver menos' : 'Ver más'}
           </button>
-          <button
-            className="btn btn-outline-secondary border-0 btn-add-to-cart"
-            onClick={handleAddToCart}
-          >
+          <button className="btn btn-outline-secondary border-0 btn-add-to-cart" onClick={handleAddToCart}>
             Agregar al carrito
           </button>
         </div>
@@ -53,7 +49,10 @@ Card.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string,
   url: PropTypes.string,
-  imageSource: PropTypes.string
+  imageSource: PropTypes.string,
+  price: PropTypes.number.isRequired,
+  quantity: PropTypes.number.isRequired,
 };
 
 export default Card;
+
