@@ -10,7 +10,6 @@ const Item = ({ title, image, description, price, quantity }) => {
       <p>Price: {price}</p>
       <p>Quantity: {quantity}</p>
       <p>Total Price: {price * quantity}</p>
-      {/* Resto del contenido del componente Item */}
     </div>
   );
 };
