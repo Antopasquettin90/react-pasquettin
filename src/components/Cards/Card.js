@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './card.css';
+import { Link } from 'react-router-dom';
 
-function Card({ imageSource, title, text, url, price, quantity }) {
+function Card({ imageSource, title, text, url, price, quantity, description }) {
   const [expanded, setExpanded] = useState(false);
 
   const handleExpand = () => {
@@ -22,20 +23,31 @@ function Card({ imageSource, title, text, url, price, quantity }) {
         <h4 className="card-title">{title}</h4>
         {expanded && (
           <p className="card-text text-secondary">
-            {text
-              ? text
+            {description
+              ? description
               : 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam deserunt fuga accusantium excepturi quia, voluptates obcaecati nam in voluptas perferendis velit harum dignissimos quasi ex? Tempore repellat quo doloribus magnam.'}
           </p>
         )}
         <p>Precio: {price}</p>
         <p>Cantidad: {quantity}</p>
         <div className="button-container">
-          <button
-            className={`btn btn-outline-secondary border-0 ${expanded ? 'expanded' : ''}`}
-            onClick={handleExpand}
-          >
-            {expanded ? 'Ver menos' : 'Ver más'}
-          </button>
+          {expanded ? (
+            <>
+              <button className="btn btn-outline-secondary border-0" onClick={handleExpand}>
+                Ver menos
+              </button>
+              <Link to={`/product/${url}/details`}>
+                <button className="btn btn-outline-secondary border-0 expanded">Ver más</button>
+              </Link>
+              <Link to={`/product/${url}/details`}>
+                <button className="btn btn-outline-secondary border-0">Ver más detalles</button>
+              </Link>
+            </>
+          ) : (
+            <button className="btn btn-outline-secondary border-0" onClick={handleExpand}>
+              Ver más
+            </button>
+          )}
           <button className="btn btn-outline-secondary border-0 btn-add-to-cart" onClick={handleAddToCart}>
             Agregar al carrito
           </button>
@@ -52,7 +64,7 @@ Card.propTypes = {
   imageSource: PropTypes.string,
   price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
+  description: PropTypes.string,
 };
 
 export default Card;
-

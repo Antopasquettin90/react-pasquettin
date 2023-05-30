@@ -1,15 +1,17 @@
+// Cards.js
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
-import image1 from '../assets/image1.jpg';
 
+
+import image1 from '../assets/image1.jpg';
 
 const cards = [
   {
     id: 1,
     title: 'Sabado 13/05/2023',
     image: image1,
-    url: 'https://www.instagram.com/',
+    url: 'producto-1',
     category: 'Mes 5',
     description: 'Descripción del evento 1',
     price: '$800',
@@ -19,7 +21,7 @@ const cards = [
     id: 2,
     title: 'Sabado 20/06/2023',
     image: image1,
-    url: 'https://www.instagram.com/',
+    url: 'producto-2',
     category: 'Mes 6',
     description: 'Descripción del evento 2',
     price: '$800',
@@ -29,7 +31,7 @@ const cards = [
     id: 3,
     title: 'Sabado 27/07/2023',
     image: image1,
-    url: 'https://www.instagram.com/',
+    url: 'producto-3',
     category: 'Mes 7',
     description: 'Descripción del evento 3',
     price: '$800',
@@ -79,9 +81,9 @@ function Cards({ categoryId }) {
             </button>
           </div>
         </div>
-        {filteredCards.map(({ id, title, image, url, price, quantity }) => (
+        {filteredCards.map(({ id, title, image, url, price, quantity, description }) => (
           <div className="col-md-4" key={id}>
-            <Card imageSource={image} title={title} url={url} price={price} quantity={quantity} />
+            <Card imageSource={image} title={title} url={url} price={price} quantity={quantity} description={description} />
           </div>
         ))}
       </div>

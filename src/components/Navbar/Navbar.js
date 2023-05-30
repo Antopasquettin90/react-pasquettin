@@ -1,6 +1,6 @@
 import React from "react";
 import CartWidget from "../Cart/CartWidget";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ImgLogo from "../assets/image3.jpeg";
 import "./navbar.css";
 
@@ -62,11 +62,13 @@ const Navbar = () => {
               </ul>
             </li>
             <NavbarItem titulo="Contactos" path="/Contactos" />
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
+          </ul>
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link to="/carrito" className="nav-link">
                 <CartWidget />
-              </li>
-            </ul>
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
