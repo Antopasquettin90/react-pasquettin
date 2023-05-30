@@ -1,24 +1,27 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Cards from './components/Cards/Cards';
 import ItemList from './components/Items/ItemList';
+import ProductDetails from './components/Products/ProductDetails';
+import ItemDetailsProduct from './components/Products/ItemDetailsProduct';
 import Footer from './components/Footer/Footer';
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
         <Route path="/Inicio" element={<Cards />} />
-        <Route path="/category/:categoryId" element={<Cards />} />
-        <Route path="/detail/:detailId" element={<ItemList />} />
-      </Routes>
+        <Route path="/" element={<Cards />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/product/:id/details" element={<ItemDetailsProduct />} />
+        </Routes>
       <Footer/>
     </BrowserRouter>
   );
-};
+}
 
 export default App;
