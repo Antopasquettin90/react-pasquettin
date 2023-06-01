@@ -1,10 +1,10 @@
-// Cards.js
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
-
+import { Link, useParams } from 'react-router-dom';
 
 import image1 from '../assets/image1.jpg';
+import { useCart } from '../Cart/CartContext';
 
 const cards = [
   {
@@ -39,53 +39,69 @@ const cards = [
   }
 ];
 
-function Cards({ categoryId }) {
-  const [selectedCategory, setSelectedCategory] = useState(categoryId || 'All');
+const ItemDetailsProduct = ({ product }) => {
+  const { addToCart } = useCart();
 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
+  const handleAddToCart = () => {
+    addToCart(product);
+    console.log('Elemento agregado al carrito:', product);
   };
 
-  const filteredCards = selectedCategory !== 'All'
-    ? cards.filter((card) => card.category === selectedCategory)
-    : cards;
+  return (
+    <div className="letras">
+      <h2 className='titulo-producto'>Detalles del producto con ID: {product.url}</h2>
+      <p>ID: {product.id}</p>
+      <p>Precio: {product.price}</p>
+      <p>Stock disponible: {product.quantity}</p>
+      <p>Descripción: {product.description}</p>
+      <button className="btn btn-outline-secondary border-0" onClick={handleAddToCart}>
+        Agregar al carrito
+      </button>
+    </div>
+  );
+};
+
+function Cards({ categoryId }) {
+  const [expandedCard, setExpandedCard] = useState(null);
+  const { addToCart } = useCart();
+
+  const handleCardExpand = (cardId) => {
+    setExpandedCard(cardId);
+  };
+
+  const handleCardCollapse = () => {
+    setExpandedCard(null);
+  };
+
+  const { id } = useParams();
+
+  const selectedProduct = cards.find((card) => card.url === id);
 
   return (
     <div className="container d-flex justify-content-center align-items-center h-100">
       <div className="row">
-        <div className="col-12 mb-4">
-          <div className="btn-group">
-            <button
-              className={`btn btn-outline-secondary border-0 ${selectedCategory === 'All' ? 'active' : ''}`}
-              onClick={() => handleCategoryChange('All')}
-            >
-              All
-            </button>
-            <button
-              className={`btn btn-outline-secondary border-0 ${selectedCategory === 'Mes 5' ? 'active' : ''}`}
-              onClick={() => handleCategoryChange('Mes 5')}
-            >
-              Mes 5
-            </button>
-            <button
-              className={`btn btn-outline-secondary border-0 ${selectedCategory === 'Mes 6' ? 'active' : ''}`}
-              onClick={() => handleCategoryChange('Mes 6')}
-            >
-              Mes 6
-            </button>
-            <button
-              className={`btn btn-outline-secondary border-0 ${selectedCategory === 'Mes 7' ? 'active' : ''}`}
-              onClick={() => handleCategoryChange('Mes 7')}
-            >
-              Mes 7
-            </button>
+        {selectedProduct ? (
+          <div className="col-md-12">
+            <ItemDetailsProduct product={selectedProduct} />
           </div>
-        </div>
-        {filteredCards.map(({ id, title, image, url, price, quantity, description }) => (
-          <div className="col-md-4" key={id}>
-            <Card imageSource={image} title={title} url={url} price={price} quantity={quantity} description={description} />
-          </div>
-        ))}
+        ) : (
+          cards.map(({ id, title, image, url, price, quantity, description }) => (
+            <div className="col-md-4" key={id}>
+              <Card
+                imageSource={image}
+                title={title}
+                url={url}
+                price={price}
+                quantity={quantity}
+                description={description}
+                expanded={expandedCard === id}
+                onExpand={() => handleCardExpand(id)}
+                onCollapse={handleCardCollapse}
+                onAddToCart={() => addToCart({ id, title, image, url, price, quantity, description })}
+              />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

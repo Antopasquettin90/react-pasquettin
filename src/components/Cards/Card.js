@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import './card.css';
 import { Link } from 'react-router-dom';
 
-function Card({ imageSource, title, text, url, price, quantity, description }) {
-  const [expanded, setExpanded] = useState(false);
-
+function Card({ imageSource, title, text, url, price, quantity, description, expanded, onExpand, onCollapse, onAddToCart }) {
   const handleExpand = () => {
-    setExpanded(!expanded);
-  };
-
-  const handleAddToCart = () => {
-    console.log('Elemento agregado al carrito');
+    if (expanded) {
+      onCollapse();
+    } else {
+      onExpand();
+    }
   };
 
   return (
@@ -33,19 +31,23 @@ function Card({ imageSource, title, text, url, price, quantity, description }) {
         <div className="button-container">
           {expanded ? (
             <>
+              {expanded && (
+                <Link to={`/product/${url}/details`}>
+                  <button className="btn btn-outline-secondary border-0">Ver más detalles</button>
+                </Link>
+              )}
               <button className="btn btn-outline-secondary border-0" onClick={handleExpand}>
                 Ver menos
               </button>
-              <Link to={`/product/${url}/details`}>
-                <button className="btn btn-outline-secondary border-0">Ver más detalles</button>
-              </Link>
             </>
           ) : (
-            <button className="btn btn-outline-secondary border-0" onClick={handleExpand}>
-              Ver más
-            </button>
+            <>
+              <button className="btn btn-outline-secondary border-0" onClick={handleExpand}>
+                Ver más
+              </button>
+            </>
           )}
-          <button className="btn btn-outline-secondary border-0 btn-add-to-cart" onClick={handleAddToCart}>
+          <button className="btn btn-outline-secondary border-0 btn-add-to-cart" onClick={onAddToCart}>
             Agregar al carrito
           </button>
         </div>
@@ -62,6 +64,10 @@ Card.propTypes = {
   price: PropTypes.number.isRequired,
   quantity: PropTypes.number.isRequired,
   description: PropTypes.string,
+  expanded: PropTypes.bool,
+  onExpand: PropTypes.func,
+  onCollapse: PropTypes.func,
+  onAddToCart: PropTypes.func
 };
 
 export default Card;
