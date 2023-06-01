@@ -37,9 +37,6 @@ function Card({ imageSource, title, text, url, price, quantity, description }) {
                 Ver menos
               </button>
               <Link to={`/product/${url}/details`}>
-                <button className="btn btn-outline-secondary border-0 expanded">Ver más</button>
-              </Link>
-              <Link to={`/product/${url}/details`}>
                 <button className="btn btn-outline-secondary border-0">Ver más detalles</button>
               </Link>
             </>

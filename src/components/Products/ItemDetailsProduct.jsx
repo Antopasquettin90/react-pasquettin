@@ -1,6 +1,7 @@
-// ItemDetailsProduct.js
 import React from 'react';
 import { useParams } from 'react-router-dom';
+
+import './products.css';
 
 
 const productDetails = {
@@ -32,10 +33,10 @@ const ItemDetailsProduct = () => {
   const selectedProduct = productDetails[id];
 
   return (
-    <div>
+    <div className="letras">
       {selectedProduct ? (
         <div>
-          <h2>Detalles del producto con ID: {id}</h2>
+          <h2 className='titulo-producto'>Detalles del producto con ID: {id}</h2>
           <p>ID: {selectedProduct.id}</p>
           <p>Precio: {selectedProduct.price}</p>
           <p>Stock disponible: {selectedProduct.stock}</p>
@@ -51,3 +52,4 @@ const ItemDetailsProduct = () => {
 };
 
 export default ItemDetailsProduct;
+
