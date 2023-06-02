@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './card.css';
 import { Link } from 'react-router-dom';
@@ -19,11 +19,9 @@ function Card({ imageSource, title, text, url, price, quantity, description, exp
       </div>
       <div className="card-body text-light">
         <h4 className="card-title">{title}</h4>
-        {expanded && (
+        {expanded && description && (
           <p className="card-text text-secondary">
-            {description
-              ? description
-              : 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam deserunt fuga accusantium excepturi quia, voluptates obcaecati nam in voluptas perferendis velit harum dignissimos quasi ex? Tempore repellat quo doloribus magnam.'}
+            {description}
           </p>
         )}
         <p>Precio: {price}</p>
@@ -31,21 +29,17 @@ function Card({ imageSource, title, text, url, price, quantity, description, exp
         <div className="button-container">
           {expanded ? (
             <>
-              {expanded && (
-                <Link to={`/product/${url}/details`}>
-                  <button className="btn btn-outline-secondary border-0">Ver más detalles</button>
-                </Link>
-              )}
+              <Link to={`/product/${url}/details`}>
+                <button className="btn btn-outline-secondary border-0">Ver más detalles</button>
+              </Link>
               <button className="btn btn-outline-secondary border-0" onClick={handleExpand}>
                 Ver menos
               </button>
             </>
           ) : (
-            <>
-              <button className="btn btn-outline-secondary border-0" onClick={handleExpand}>
-                Ver más
-              </button>
-            </>
+            <button className="btn btn-outline-secondary border-0" onClick={handleExpand}>
+              Ver más
+            </button>
           )}
           <button className="btn btn-outline-secondary border-0 btn-add-to-cart" onClick={onAddToCart}>
             Agregar al carrito

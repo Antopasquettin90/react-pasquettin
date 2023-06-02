@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
+import '../Products/products.css';
 import Card from './Card';
-import { Link, useParams } from 'react-router-dom';
-
 import image1 from '../assets/image1.jpg';
-import { useCart } from '../Cart/CartContext';
 
-const cards = [
-  {
+const productDetails = {
+  'producto-1': {
     id: 1,
     title: 'Sabado 13/05/2023',
     image: image1,
@@ -17,7 +15,7 @@ const cards = [
     price: '$800',
     quantity: 500
   },
-  {
+  'producto-2': {
     id: 2,
     title: 'Sabado 20/06/2023',
     image: image1,
@@ -27,7 +25,7 @@ const cards = [
     price: '$800',
     quantity: 300
   },
-  {
+  'producto-3': {
     id: 3,
     title: 'Sabado 27/07/2023',
     image: image1,
@@ -37,67 +35,64 @@ const cards = [
     price: '$800',
     quantity: 1500
   }
-];
+};
 
-const ItemDetailsProduct = ({ product }) => {
-  const { addToCart } = useCart();
-
-  const handleAddToCart = () => {
-    addToCart(product);
-    console.log('Elemento agregado al carrito:', product);
-  };
+const ItemDetailsProduct = () => {
+  const { id } = useParams();
+  const selectedProduct = productDetails[id];
 
   return (
     <div className="letras">
-      <h2 className='titulo-producto'>Detalles del producto con ID: {product.url}</h2>
-      <p>ID: {product.id}</p>
-      <p>Precio: {product.price}</p>
-      <p>Stock disponible: {product.quantity}</p>
-      <p>Descripción: {product.description}</p>
-      <button className="btn btn-outline-secondary border-0" onClick={handleAddToCart}>
-        Agregar al carrito
-      </button>
+      {selectedProduct ? (
+        <div>
+          <h2 className='titulo-producto'>Detalles del producto con ID: {id}</h2>
+          <p>ID: {selectedProduct.id}</p>
+          <p>Precio: {selectedProduct.price}</p>
+          <p>Stock disponible: {selectedProduct.quantity}</p>
+          <p>Descripción: {selectedProduct.description}</p>
+        </div>
+      ) : (
+        <div>
+          <h2>Producto no encontrado</h2>
+        </div>
+      )}
     </div>
   );
 };
 
-function Cards({ categoryId }) {
-  const [expandedCard, setExpandedCard] = useState(null);
-  const { addToCart } = useCart();
-
-  const handleCardExpand = (cardId) => {
-    setExpandedCard(cardId);
-  };
-
-  const handleCardCollapse = () => {
-    setExpandedCard(null);
-  };
-
+function Cards() {
   const { id } = useParams();
+  const selectedProduct = productDetails[id];
+  const [expandedCardId, setExpandedCardId] = useState(null);
 
-  const selectedProduct = cards.find((card) => card.url === id);
+  const handleExpand = (cardId) => {
+    setExpandedCardId(cardId);
+  };
+
+  const handleCollapse = () => {
+    setExpandedCardId(null);
+  };
 
   return (
     <div className="container d-flex justify-content-center align-items-center h-100">
       <div className="row">
         {selectedProduct ? (
           <div className="col-md-12">
-            <ItemDetailsProduct product={selectedProduct} />
+            <ItemDetailsProduct />
           </div>
         ) : (
-          cards.map(({ id, title, image, url, price, quantity, description }) => (
-            <div className="col-md-4" key={id}>
+          Object.values(productDetails).map((product) => (
+            <div className="col-md-4" key={product.id}>
               <Card
-                imageSource={image}
-                title={title}
-                url={url}
-                price={price}
-                quantity={quantity}
-                description={description}
-                expanded={expandedCard === id}
-                onExpand={() => handleCardExpand(id)}
-                onCollapse={handleCardCollapse}
-                onAddToCart={() => addToCart({ id, title, image, url, price, quantity, description })}
+                imageSource={product.image}
+                title={product.title}
+                url={product.url}
+                price={product.price}
+                quantity={product.quantity}
+                description={product.description}
+                expanded={expandedCardId === product.id}
+                onExpand={() => handleExpand(product.id)}
+                onCollapse={handleCollapse}
               />
             </div>
           ))
@@ -106,9 +101,5 @@ function Cards({ categoryId }) {
     </div>
   );
 }
-
-Cards.propTypes = {
-  categoryId: PropTypes.string
-};
 
 export default Cards;

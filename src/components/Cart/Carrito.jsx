@@ -1,34 +1,28 @@
-import React from 'react';
-import CartWidget from './CartWidget';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './cartstyles.css';
-import { useCart } from '../Cart/CartContext';
+import { CartContext } from '../Cart/CartContext';
 import CartItem from './CartItem';
 
 const Carrito = () => {
-  const { cartItems, removeFromCart, clearCart } = useCart(); // Agregar clearCart en destructuring
+  const { cartItems, removeFromCart } = useContext(CartContext);
 
   return (
-    <div>
-      <h1>Carrito de Compras</h1>
-      <CartWidget />
+    <div className="container">
+      <h2>Carrito de compras</h2>
       {cartItems.length > 0 ? (
         <div>
           {cartItems.map((item) => (
             <CartItem key={item.id} item={item} removeItem={removeFromCart} />
           ))}
-          <button className="clear-cart btn btn-outline-secondary border-0 text-white" onClick={clearCart}>
-            Vaciar Carrito
-          </button>
+          <Link to="/">Seguir comprando</Link>
+          <button className="btn btn-primary">Finalizar compra</button>
         </div>
       ) : (
-        <p className='text-white'>No hay productos en el carrito.</p>
+        <div>No hay productos en el carrito.</div>
       )}
-      <Link to="/Inicio" className='carrito cart-margin btn btn-outline-secondary border-0'>Volver a la página principal</Link>
     </div>
   );
 };
 
 export default Carrito;
-
-

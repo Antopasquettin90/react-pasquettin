@@ -1,8 +1,11 @@
 import React from 'react'
-
+import Cards from '../components/Cards/Cards'
 const Compratusentradas = () => {
   return (
-    <h1>Compratusentradas</h1>
+    <div>
+      <h1>Compratusentradas</h1>
+         <Cards/>
+    </div>
   )
 }
 
