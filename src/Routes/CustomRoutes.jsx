@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Inicio from '../Pages/Inicio';
 import Imagenes from '../Pages/Imagenes';
 import LaEmpresa from '../Pages/LaEmpresa';
-import Contactos from '../Pages/Contactos';
+import Contacto from '../Pages/Contacto';
 import Compratusentradas from '../Pages/Compratusentradas';
 import Reserva from '../Pages/Reserva';
 import Proximoseventos from '../Pages/Proximoseventos';
@@ -15,10 +15,11 @@ import Footer from '../components/Footer/Footer';
 const CustomRoutes = () => {
   return (
     <Routes>
+      <Route path="/" element={<Inicio />} />
       <Route path="/Inicio" element={<Inicio />} />
       <Route path="/Imagenes" element={<Imagenes />} />
       <Route path="/LaEmpresa" element={<LaEmpresa />} />
-      <Route path="/Contactos" element={<Contactos />} />
+      <Route path="/Contacto" element={<Contacto />} />
       <Route path="/Compratusentradas" element={<Compratusentradas />} />
       <Route path="/Reserva" element={<Reserva />} />
       <Route path="/Proximoseventos" element={<Proximoseventos />} />

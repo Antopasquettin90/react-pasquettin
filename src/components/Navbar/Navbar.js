@@ -37,7 +37,7 @@ const Navbar = () => {
             <NavbarItem titulo="Imágenes" path="/Imagenes" />
             <NavbarItem titulo="Compra tus entradas" path="/Compratusentradas" />
             <NavbarItem titulo="Sobre Nosotros" path="/SobreNosotros" />
-            <NavbarItem titulo="Contactos" path="/Contactos" />
+            <NavbarItem titulo="Contacto" path="/Contacto" />
           </ul>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
