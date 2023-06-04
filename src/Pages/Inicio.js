@@ -1,5 +1,6 @@
 import React from 'react';
-import Cards from '../components/Cards/Cards';
+import './styles.css';
+
 import video from '../components/assets/tomorrowland-comprimido.mp4';
 import entradaBoliche from '../components/assets/entrada-boliche.jpg';
 import genteColores from '../components/assets/gente-colores.jpg';
@@ -103,11 +104,6 @@ const Inicio = () => {
               pionero del movimiento cultural, musical y gastronómico.
             </p>
           </div>
-          <div className=" text-center roll-in-top">
-            <a href="reserva.html" className="mt-5 btn btn-danger color-boton">
-              Reserva tu Mesa
-            </a>
-          </div>
         </div>
       </div>
 
@@ -132,10 +128,7 @@ const Inicio = () => {
             <img src={quilmesLogo} height="" width="" className="img tamaños-iconos" alt="" />
           </div>
         </div>
-      </div>
-
-      <h1>Inicio</h1>
-      <Cards />
+      </div>     
     </div>
   );
 };

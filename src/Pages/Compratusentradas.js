@@ -1,10 +1,11 @@
 import React from 'react'
 import Cards from '../components/Cards/Cards'
+import './styles.css';
 const Compratusentradas = () => {
   return (
     <div>
-      <h1>Compratusentradas</h1>
-         <Cards/>
+      <h1 className='titulos text-center tamaños-titulos-grandes'>Compratus Entradas</h1>
+      <Cards />
     </div>
   )
 }
