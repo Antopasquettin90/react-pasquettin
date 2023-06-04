@@ -15,8 +15,12 @@ const Carrito = () => {
           {cartItems.map((item) => (
             <CartItem key={item.id} item={item} removeItem={removeFromCart} />
           ))}
-          <Link to="/">Seguir comprando</Link>
-          <button className="btn btn-primary">Finalizar compra</button>
+          <Link to="/compratusentradas" className="btn btn-outline-secondary border-0 text-white">
+            Seguir comprando
+          </Link>
+          <button className="btn btn-outline-secondary border-0 text-white">
+            Finalizar compra
+          </button>
         </div>
       ) : (
         <div>No hay productos en el carrito.</div>

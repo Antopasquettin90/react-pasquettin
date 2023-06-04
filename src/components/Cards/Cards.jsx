@@ -73,6 +73,10 @@ function Cards() {
     setExpandedCardId(null);
   };
 
+  const handleAddToCart = () => {
+    // Agrega aquí la lógica para agregar el producto al carrito
+  };
+
   return (
     <div className="container d-flex justify-content-center align-items-center h-100">
       <div className="row">
@@ -93,6 +97,7 @@ function Cards() {
                 expanded={expandedCardId === product.id}
                 onExpand={() => handleExpand(product.id)}
                 onCollapse={handleCollapse}
+                onAddToCart={handleAddToCart}
               />
             </div>
           ))
