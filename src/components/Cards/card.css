@@ -39,7 +39,10 @@
     -webkit-animation: flicker-1 5s linear infinite both !important;
             animation: flicker-1 5s linear infinite both !important;
   }
-
+.color-sub1{
+  color: rgb(43, 108, 248);
+  font-weight: bold;
+}
 @-webkit-keyframes flicker-1 {
   0%,
   100% {

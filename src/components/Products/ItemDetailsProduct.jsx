@@ -17,40 +17,40 @@ const productDetails = {
       vip: 2000
     },
     quantity: {
-      general: 500,
-      vip: 100
+      general: 800,
+      vip: 50
     },
     initialQuantity: {
-      general: 500,
-      vip: 100
+      general: 800,
+      vip: 50
     }
   },
   'producto-2': {
     id: 2,
-    title: 'Sabado 5/08/2023',
+    title: 'Sabado 15/07/2023',
     image: image1,
     url: 'producto-2',
-    category: 'Agosto',
+    category: 'Julio',
     description: 'Descripción del evento 2',
     prices: {
-      general: 800,
-      vip: 2000
+      general: 2000,
+      vip: 4000
     },
     quantity: {
-      general: 500,
-      vip: 100
+      general: 900,
+      vip: 400
     },
     initialQuantity: {
-      general: 500,
-      vip: 100
+      general: 900,
+      vip: 400
     }
   },
   'producto-3': {
     id: 3,
-    title: 'Sabado 2/09/2023',
+    title: 'Sabado 5/08/2023',
     image: image1,
     url: 'producto-3',
-    category: 'Septiembre',
+    category: 'Agosto',
     description: 'Descripción del evento 3',
     prices: {
       general: 800,
@@ -64,7 +64,67 @@ const productDetails = {
       general: 500,
       vip: 100
     }
-  }
+  },
+  'producto-4': {
+    id: 4,
+    title: 'Sabado 12/08/2023',
+    image: image1,
+    url: 'producto-4',
+    category: 'Agosto',
+    description: 'Descripción del evento 4',
+    prices: {
+      general: 3000,
+      vip: 6000
+    },
+    quantity: {
+      general: 500,
+      vip: 100
+    },
+    initialQuantity: {
+      general: 500,
+      vip: 100
+    }
+  },
+  'producto-5': {
+    id: 5,
+    title: 'Sabado 2/09/2023',
+    image: image1,
+    url: 'producto-5',
+    category: 'Septiembre',
+    description: 'Descripción del evento 5',
+    prices: {
+      general: 1500,
+      vip: 3000
+    },
+    quantity: {
+      general: 1000,
+      vip: 200
+    },
+    initialQuantity: {
+      general: 1000,
+      vip: 200
+    },
+    'producto-6': {
+      id: 6,
+      title: 'Sabado 9/09/2023',
+      image: image1,
+      url: 'producto-6',
+      category: 'Septiembre',
+      description: 'Descripción del evento 6',
+      prices: {
+        general: 4000,
+        vip: 8000
+      },
+      quantity: {
+        general: 700,
+        vip: 150
+      },
+      initialQuantity: {
+        general: 700,
+        vip: 150
+      }
+    }
+  },
 };
 
 const ItemDetailsProduct = () => {
@@ -72,7 +132,7 @@ const ItemDetailsProduct = () => {
   const selectedProduct = productDetails[id];
   const [quantity, setQuantity] = useState(1);
   const [selectedType, setSelectedType] = useState('general');
-  const { addToCart, cartItems, clearCart } = useCart();
+  const { addToCart, cartItems } = useCart();
 
   useEffect(() => {
     return () => {

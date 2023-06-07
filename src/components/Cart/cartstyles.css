@@ -67,3 +67,6 @@
     text-align: center;
     
   }
+  .transparent{
+    color: rgba(255, 255, 255, 0);
+  }

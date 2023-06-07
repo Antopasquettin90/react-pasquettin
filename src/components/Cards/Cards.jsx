@@ -12,28 +12,118 @@ const productDetails = {
     url: 'producto-1',
     category: 'Julio',
     description: 'Descripción del evento 1',
-    price: '$800',
-    quantity: 500
+    prices: {
+      general: 800,
+      vip: 2000
+    },
+    quantity: {
+      general: 800,
+      vip: 50
+    },
+    initialQuantity: {
+      general: 800,
+      vip: 50
+    }
   },
   'producto-2': {
     id: 2,
-    title: 'Sabado 5/08/2023',
+    title: 'Sabado 15/07/2023',
     image: image1,
     url: 'producto-2',
-    category: 'Agosto',
+    category: 'Julio',
     description: 'Descripción del evento 2',
-    price: '$800',
-    quantity: 300
+    prices: {
+      general: 2000,
+      vip: 4000
+    },
+    quantity: {
+      general: 900,
+      vip: 400
+    },
+    initialQuantity: {
+      general: 900,
+      vip: 400
+    }
   },
   'producto-3': {
     id: 3,
-    title: 'Sabado 2/09/2023',
+    title: 'Sabado 5/08/2023',
     image: image1,
     url: 'producto-3',
-    category: 'Septiembre',
+    category: 'Agosto',
     description: 'Descripción del evento 3',
-    price: '$800',
-    quantity: 1500
+    prices: {
+      general: 800,
+      vip: 2000
+    },
+    quantity: {
+      general: 500,
+      vip: 100
+    },
+    initialQuantity: {
+      general: 500,
+      vip: 100
+    }
+  },
+  'producto-4': {
+    id: 4,
+    title: 'Sabado 12/08/2023',
+    image: image1,
+    url: 'producto-4',
+    category: 'Agosto',
+    description: 'Descripción del evento 4',
+    prices: {
+      general: 3000,
+      vip: 6000
+    },
+    quantity: {
+      general: 500,
+      vip: 100
+    },
+    initialQuantity: {
+      general: 500,
+      vip: 100
+    }
+  },
+  'producto-5': {
+    id: 5,
+    title: 'Sabado 2/09/2023',
+    image: image1,
+    url: 'producto-5',
+    category: 'Septiembre',
+    description: 'Descripción del evento 5',
+    prices: {
+      general: 1500,
+      vip: 3000
+    },
+    quantity: {
+      general: 1000,
+      vip: 200
+    },
+    initialQuantity: {
+      general: 1000,
+      vip: 200
+    }
+  },
+  'producto-6': {
+    id: 6,
+    title: 'Sabado 9/09/2023',
+    image: image1,
+    url: 'producto-6',
+    category: 'Septiembre',
+    description: 'Descripción del evento 6',
+    prices: {
+      general: 4000,
+      vip: 8000
+    },
+    quantity: {
+      general: 700,
+      vip: 150
+    },
+    initialQuantity: {
+      general: 700,
+      vip: 150
+    }
   }
 };
 
@@ -47,8 +137,9 @@ const ItemDetailsProduct = () => {
         <div>
           <h2 className='titulo-producto'>Detalles del producto con ID: {id}</h2>
           <p>ID: {selectedProduct.id}</p>
-          <p>Precio: {selectedProduct.price}</p>
-          <p>Stock disponible: {selectedProduct.quantity}</p>
+          <p>Precio General: {selectedProduct.prices.general}</p>
+          <p>Precio VIP: {selectedProduct.prices.vip}</p>
+          <p>Stock disponible: {selectedProduct.quantity.general}</p>
           <p>Descripción: {selectedProduct.description}</p>
         </div>
       ) : (
@@ -109,7 +200,7 @@ function Cards() {
                   imageSource={product.image}
                   title={product.title}
                   url={product.url}
-                  price={product.price}
+                  prices={product.prices}
                   quantity={product.quantity}
                   description={product.description}
                   expanded={expandedCardId === product.id}
