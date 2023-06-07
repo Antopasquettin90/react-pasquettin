@@ -1,3 +1,4 @@
+// Carrito.js
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './cartstyles.css';
@@ -13,13 +14,15 @@ const Carrito = () => {
     // Lógica para finalizar la compra
     setCompraFinalizada(true);
     // Enviar los datos del carrito al servidor
-    // y redirigir al usuario a una página de confirmación o agradecimiento.
+    // redirigir al usuario a una página de confirmación o agradecimiento. Si es que lo hago
     navigate('/formulario-compra'); // Redirigir al formulario de compra
   };
 
   const handleVolverAtras = () => {
     navigate(-1);
   };
+
+  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div className="container">
@@ -29,6 +32,10 @@ const Carrito = () => {
           {cartItems.map((item) => (
             <CartItem key={item.id} item={item} removeItem={removeFromCart} />
           ))}
+          <div className="cart-summary">
+            <p className="total-quantity">Total de entradas: {totalQuantity}</p>
+            <p className="total-price">Total a pagar: ${calculateTotal()}</p>
+          </div>
           <div className="buttons-container">
             <button className="btn btn-outline-secondary border-0 text-white" onClick={clearCart}>
               Vaciar el carrito
