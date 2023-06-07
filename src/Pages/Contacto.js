@@ -4,8 +4,8 @@ import './styles.css';
 const Contacto = () => {
   return (
     <div>
-      <div className="tracking-in-contract">
-        <h2 className="titulos text-center tamaños-titulos-grandes">Contacto</h2>
+      <div>
+        <h2 className="titulos text-center tamaños-titulos-grandes">CONTACTO</h2>
       </div>
 
       <p className="subtitulos tamaños-letras-chicas text-center text-white">Dejanos tus datos</p>

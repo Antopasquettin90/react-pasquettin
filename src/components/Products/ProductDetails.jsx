@@ -1,11 +1,12 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import image1 from '../assets/image1.jpg';
 
 const productDetails = {
   'producto-1': {
     id: 1,
     title: 'Producto 1',
-    image: 'ruta-de-la-imagen-del-producto-1.jpg',
+    image: image1,
     details: 'Detalles del producto 1',
     price: '$100',
     stock: 10,
@@ -13,7 +14,7 @@ const productDetails = {
   'producto-2': {
     id: 2,
     title: 'Producto 2',
-    image: 'ruta-de-la-imagen-del-producto-2.jpg',
+    image: image1,
     details: 'Detalles del producto 2',
     price: '$200',
     stock: 5,
@@ -21,7 +22,7 @@ const productDetails = {
   'producto-3': {
     id: 3,
     title: 'Producto 3',
-    image: 'ruta-de-la-imagen-del-producto-3.jpg',
+    image: image1,
     details: 'Detalles del producto 3',
     price: '$300',
     stock: 8,
@@ -31,6 +32,15 @@ const productDetails = {
 const ProductDetails = () => {
   const { id } = useParams();
   const selectedProduct = productDetails[id];
+  const [showDetails, setShowDetails] = useState(false);
+
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
+  };
+
+  const addToCart = () => {
+    // Lógica para agregar el producto al carrito
+  };
 
   if (!selectedProduct) {
     return (
@@ -43,11 +53,23 @@ const ProductDetails = () => {
   return (
     <div>
       <h2>Detalles del producto</h2>
-      <p>Nombre: {selectedProduct.title}</p>
-      <img src={selectedProduct.image} alt="Imagen del producto" />
-      <p>Detalles: {selectedProduct.details}</p>
-      <p>Precio: {selectedProduct.price}</p>
-      <p>Stock: {selectedProduct.stock}</p>
+      <div style={{ display: 'flex' }}>
+        <div>
+          <img src={selectedProduct.image} alt="Imagen del producto" style={{ width: '200px' }} />
+        </div>
+        <div style={{ marginLeft: '20px' }}>
+          <p>Precio: {selectedProduct.price}</p>
+          <p>Stock: {selectedProduct.stock}</p>
+          <button onClick={addToCart}>Agregar al carrito</button>
+        </div>
+      </div>
+      <button onClick={toggleDetails}>Ver más detalles</button>
+      {showDetails && (
+        <div>
+          <p>Detalles: {selectedProduct.details}</p>
+        </div>
+      )}
+      <Link to="/carrito">Ir al carrito</Link>
     </div>
   );
 };

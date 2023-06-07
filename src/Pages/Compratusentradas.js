@@ -4,7 +4,7 @@ import './styles.css';
 const Compratusentradas = () => {
   return (
     <div>
-      <h1 className='titulos text-center tamaños-titulos-grandes'>Compratus Entradas</h1>
+      <h1 className='titulos text-center tamaños-titulos-grandes'>COMPRA TUS ENTRADAS</h1>
       <Cards />
     </div>
   )

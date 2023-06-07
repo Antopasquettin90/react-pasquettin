@@ -10,8 +10,8 @@ import imagen6 from '../../src/components/assets/quijote6_fotor.jpg';
 const Imagenes = () => {
   return (
     <div>
-      <div className="tracking-in-contract">
-        <h2 className="titulos text-center tamaños-titulos-grandes">Imágenes</h2>
+      <div>
+        <h2 className="titulos text-center tamaños-titulos-grandes">IMÁGENES</h2>
       </div>
       <div className="separar container-fluid text-center">
         <div className="row align-items-start text-white tamaños-letras-chicas">

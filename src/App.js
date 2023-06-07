@@ -18,6 +18,7 @@ import Imagenes from './Pages/Imagenes'
 import Compratusentradas  from './Pages/Compratusentradas'
 import Sobrenosotros from './Pages/SobreNosotros'
 import Contacto from './Pages/Contacto'
+import ProductDetails from './components/Products/ItemDetailsProduct';
 
 const App = () => {
   return (

@@ -21,7 +21,12 @@
     'Lucida Sans Regular', 'Lucida Grande', 
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important
   }
-  
+  .texto1 {
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
   .card-link {
     display: block;
     margin-top: 10px;

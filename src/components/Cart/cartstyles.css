@@ -35,7 +35,7 @@
   }
   
   .cart-widget .clear-cart:hover {
-    color: #ff0000; /* Cambia el color de resaltado al pasar el cursor por encima */
+    color: #ff0000; 
   }
   
   .cart-link {
@@ -61,4 +61,9 @@
   .cart-item-image{
     height: 100px !important;
 
+  }
+  .titulo-carrito {
+    color: rgba(177, 2, 2, 0.904)!important;
+    text-align: center;
+    
   }

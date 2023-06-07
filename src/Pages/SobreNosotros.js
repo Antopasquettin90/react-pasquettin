@@ -6,8 +6,8 @@ import gin from "../components/assets/gin_fotor.jpg";
 const SobreNosotros = () => {
   return (
     <div>
-      <div className="tracking-in-contract">
-        <h2 className="text-center titulos color-titulos tamaños-titulos-grandes">El Bar</h2>
+      <div>
+        <h2 className="text-center titulos color-titulos tamaños-titulos-grandes">EL BAR</h2>
       </div>
 
       <div className="container-fluid text-center tamaños-letras-chicos">
