@@ -1,21 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './cartstyles.css';
 import { CartContext } from '../Cart/CartContext';
 import CartItem from './CartItem';
+import FormularioCompra from '../Forms/FormularioCompra';
 
 const Carrito = () => {
   const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
   const navigate = useNavigate();
+  const [isCompraFinalizada, setCompraFinalizada] = useState(false);
 
   const handleFinalizarCompra = () => {
-    // Lógica para finalizar la compra, por ejemplo, enviar los datos del carrito al servidor o realizar alguna acción específica.
-    // Aquí puedes agregar tu lógica personalizada para finalizar la compra
-    clearCart();
+    // Lógica para finalizar la compra
+    setCompraFinalizada(true);
+    // Enviar los datos del carrito al servidor
+    // y redirigir al usuario a una página de confirmación o agradecimiento.
+    navigate('/formulario-compra'); // Redirigir al formulario de compra
   };
 
   const handleVolverAtras = () => {
-    navigate(-1); // Volver atrás en el historial de navegación
+    navigate(-1); 
   };
 
   return (
@@ -40,6 +44,14 @@ const Carrito = () => {
               Volver atrás
             </button>
           </div>
+          {isCompraFinalizada ? (
+            <div>
+              <h3>¡Compra finalizada!</h3>
+              <p>Gracias por tu compra. Recibirás un correo electrónico con los detalles de tu pedido.</p>
+            </div>
+          ) : (
+            <FormularioCompra total={0} compras={[]} />
+          )}
         </div>
       ) : (
         <div className='text-center text-white'>

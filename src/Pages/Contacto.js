@@ -40,8 +40,17 @@ const Contacto = () => {
         </form>
 
         <div className="mt-3 col-12 text-center">
-          <iframe className="special-inframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.6697039094465!2d-64.5892554554906!3d-34.839396200529535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95dab892b9dadc81%3A0xc30d23496dcd8c25!2sAv.%20M%20Espinoza%20240%2C%20Villa%20Huidobro%2C%20C%C3%B3rdoba!5e0!3m2!1sen!2sar!4v1623428186814!5m2!1sen!2sar" width="100%" height="300" style={{ border: 0 }} allowFullScreen="" loading="lazy"></iframe>
-        </div>
+        <iframe
+        title="Mapa de ubicación"
+        className="special-inframe"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3274.6697039094465!2d-64.5892554554906!3d-34.839396200529535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95dab892b9dadc81%3A0xc30d23496dcd8c25!2sAv.%20M%20Espinoza%20240%2C%20Villa%20Huidobro%2C%20C%C3%B3rdoba!5e0!3m2!1sen!2sar!4v1623428186814!5m2!1sen!2sar"
+        width="100%"
+        height="300"
+        style={{ border: 0 }}
+        allowFullScreen=""
+        loading="lazy"
+        ></iframe>
+       </div>
       </div>
     </div>
   );
