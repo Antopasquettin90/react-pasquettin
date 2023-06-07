@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const FormularioCompra = (props) => {
   const { total, compras } = props;
+  const navigate = useNavigate();
 
   const [checkout, setCheckout] = useState({
     buyer: {
@@ -31,6 +33,9 @@ const FormularioCompra = (props) => {
       total,
       items: compras,
     });
+
+    // Navegar al formulario de medio de pago
+    navigate('/formulario-medio-pago');
   };
 
   const handleChange = (e) => {
@@ -49,16 +54,7 @@ const FormularioCompra = (props) => {
       <h2>Formulario de Compra</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Email:</label>
-          <input
-            type="text"
-            name="email"
-            value={checkout.buyer.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Nombre:</label>
+          <label className='text-white'>Nombre:</label>
           <input
             type="text"
             name="nombre"
@@ -67,7 +63,7 @@ const FormularioCompra = (props) => {
           />
         </div>
         <div>
-          <label>Apellido:</label>
+          <label className='text-white'>Apellido:</label>
           <input
             type="text"
             name="apellido"
@@ -76,7 +72,16 @@ const FormularioCompra = (props) => {
           />
         </div>
         <div>
-          <label>Dirección:</label>
+          <label className='text-white'>Email:</label>
+          <input
+            type="text"
+            name="email"
+            value={checkout.buyer.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label className='text-white'>Dirección:</label>
           <input
             type="text"
             name="direccion"
@@ -85,7 +90,7 @@ const FormularioCompra = (props) => {
           />
         </div>
         <div>
-          <label>Teléfono:</label>
+          <label className='text-white'>Teléfono:</label>
           <input
             type="text"
             name="telefono"
@@ -93,7 +98,9 @@ const FormularioCompra = (props) => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">Comprar</button>
+        <button type="submit">
+          Siguiente
+        </button>
       </form>
     </div>
   );
